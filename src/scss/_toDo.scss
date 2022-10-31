@@ -6,15 +6,17 @@ body {
 }
 
 h1 {
+  display: flex;
+  justify-content: center;
+  background-color: indianred;
 }
+
 .containerList {
   display: flex;
   flex-direction: row;
   background-color: pink;
   justify-content: center;
   align-items: center;
-  height: 50%;
-  width: 50%;
 }
 
 .ulStyle {
@@ -27,11 +29,11 @@ h1 {
 
   li {
     color: white;
-  }
-}
+    display: flex;
+    justify-content: flex-end;
 
-.checkboxesStyle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    input {
+      justify-content: center;
+    }
+  }
 }

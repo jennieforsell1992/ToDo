@@ -1,52 +1,43 @@
-import { ToDo } from "./todo";
+//import { ToDo } from "./todo";
 
+let todoContainer = document.getElementById("todoContainer");
+todoContainer.className = "containerList";
+let newUl = document.createElement("ul");
+newUl.className = "ulStyle";
+todoContainer.appendChild(newUl);
 
-let containerList = document.getElementById("toDoContainer");
-containerList.className = "containerList";
-let checkboxes = document.getElementById("myCheckboxes");
-checkboxes.className = "checkboxesStyle";
+newList =["städa","Plugga","Gymma","laga mat"];
 
-let ulList = document.getElementById("toDoList");
-ulList.className = "ulStyle";
+for (let i = 0; i < newList.length; i++){
 
-let myList = [new ToDo("diska","gå till gymmet","laga mat", "plugga på javascript")];
+    let newLiList = document.createElement("li");
+    newLiList.className = "myListStyle";
 
+    newUl.appendChild(newLiList);
 
-for (let i = 0; i < myList.length; i++){
-let liListOne = document.createElement("li");
-let liListTwo = document.createElement("li");
-let liListThree = document.createElement("li");
-let liListFour = document.createElement("li");
+    newLiList.innerHTML += newList[i];
 
-ulList.appendChild(liListOne);
-ulList.appendChild(liListTwo);
-ulList.appendChild(liListThree);
-ulList.appendChild(liListFour);
+    let myInputTag = document.createElement("input");
+    myInputTag.setAttribute("type","checkbox");
+    newLiList.appendChild(myInputTag);
+    myInputTag.addEventListener("click", checkInput)
+    
+    function checkInput(){
+    if(myInputTag.checked === true){
+    
+        newLiList.innerHTML = "Klar!";
+    }
 
-liListOne.innerHTML = myList[i].clean;
-liListTwo.innerHTML = myList[i].workout;
-liListThree.innerHTML = myList[i].eat;
-liListFour.innerHTML = myList[i].studying;
-
-let myCheckbox = document.getElementById("myCheckbox")
-myCheckbox.addEventListener("click", checked);
-
-function checked(){
-
-if(myCheckbox.checked === true){
-    liListOne.innerHTML = "Klar!";
-   
-}
-else{
-    return liListOne.innerHTML = myList[i].clean; 
-
+    else{
+        return newLiList.innerHTML = newList[i];
+    }
 
 }
 }
 
 
 
-}
+
 
 
 
