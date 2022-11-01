@@ -8,13 +8,14 @@ body {
 h1 {
   display: flex;
   justify-content: center;
-  background-color: indianred;
+  background-color: palevioletred;
 }
 
 .containerList {
   display: flex;
   flex-direction: row;
   background-color: pink;
+  border: 5px solid palevioletred;
   justify-content: center;
   align-items: center;
 }
@@ -33,7 +34,12 @@ h1 {
     justify-content: flex-end;
 
     input {
-      justify-content: center;
     }
   }
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  background-color: paleturquoise;
 }

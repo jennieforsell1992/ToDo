@@ -12,28 +12,54 @@ for (let i = 0; i < newList.length; i++){
 
     let newLiList = document.createElement("li");
     newLiList.className = "myListStyle";
-
     newUl.appendChild(newLiList);
 
-    newLiList.innerHTML += newList[i];
+    newSpan = document.createElement("span");
+    newSpan.className = "textStyle";
+    newLiList.appendChild(newSpan);
+
+    newSpan.innerHTML += newList[i];
 
     let myInputTag = document.createElement("input");
     myInputTag.setAttribute("type","checkbox");
     newLiList.appendChild(myInputTag);
-    myInputTag.addEventListener("click", checkInput)
+    myInputTag.addEventListener("click",() => {checkInput(myInputTag,newSpan, newList[i])});
+
+    deleteButton = document.createElement("button");
+    newLiList.appendChild(deleteButton);
+    deleteButton.innerHTML ="x";
+    deleteButton.addEventListener("click",() => {deleteTask(deleteButton,newSpan)});
     
-    function checkInput(){
+
+}
+
+   function checkInput(myInputTag,newSpan, content){
     if(myInputTag.checked === true){
-    
-        newLiList.innerHTML = "Klar!";
+    console.log(content);
+        let li = myInputTag.parentElement;
+        let spanText= li.firstChild;
+        spanText.innerText = "Klar!";
+        
+        
     }
+     else {
+        if (myInputTag.checked ===false){
+            let li = myInputTag.parentElement;
+            let spanText= li.firstChild;
 
-    else{
-        return newLiList.innerHTML = newList[i];
+        return spanText.innerHTML = content;
     }
+}
+
+
 
 }
-}
+
+//function deleteTask(){
+    //if(del){
+       // newLiList.innerHTML ="";
+    //}
+//}
 
 
 
