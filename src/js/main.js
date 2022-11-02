@@ -1,12 +1,23 @@
-//import { ToDo } from "./todo";
+import { ToDo } from "./todo";
+
+let inputContainer = document.getElementById("inputContainer");
+inputContainer.className = "inputContainerStyle";
+let inputTask = document.getElementById("inputTask");
+let buttonTask = document.getElementById("buttonTask");
+buttonTask.innerHTML = "x";
 
 let todoContainer = document.getElementById("todoContainer");
 todoContainer.className = "containerList";
 let newUl = document.createElement("ul");
 newUl.className = "ulStyle";
 todoContainer.appendChild(newUl);
+let doneTag = document.getElementById("deletedTask");
 
-newList =["städa","Plugga","Gymma","laga mat"];
+
+
+let newList = [new ToDo("städa", false), new ToDo("Gymma", false), new ToDo("laga mat",false), new ToDo("Plugga",false)];
+
+
 
 for (let i = 0; i < newList.length; i++){
 
@@ -14,52 +25,69 @@ for (let i = 0; i < newList.length; i++){
     newLiList.className = "myListStyle";
     newUl.appendChild(newLiList);
 
-    newSpan = document.createElement("span");
+   
+    let newSpan = document.createElement("span");
     newSpan.className = "textStyle";
     newLiList.appendChild(newSpan);
+    console.log(newSpan);
 
-    newSpan.innerHTML += newList[i];
-
+    newSpan.innerHTML += newList[i].myTodo;
+ 
+   
     let myInputTag = document.createElement("input");
     myInputTag.setAttribute("type","checkbox");
     newLiList.appendChild(myInputTag);
-    myInputTag.addEventListener("click",() => {checkInput(myInputTag,newSpan, newList[i])});
+    myInputTag.addEventListener("click",() => {
+        if(myInputTag.checked === true){
+           newList[i].completed=true;
+           newSpan.innerHTML =  newList[i].myTodo + " :klar!";  
+        }
+           else {
+            newList[i].completed=false; 
+            newSpan.innerHTML = newList[i].myTodo;
+        }
+        console.log(newList);
+    }
+    );
 
-    deleteButton = document.createElement("button");
+    let deleteButton = document.createElement("button");
     newLiList.appendChild(deleteButton);
     deleteButton.innerHTML ="x";
-    deleteButton.addEventListener("click",() => {deleteTask(deleteButton,newSpan)});
+    deleteButton.addEventListener("click",() => { 
+        if(deleteButton === true){
+
+        newList.splice(i,1);
+        newList.innerHTML =  newList[i].myTodo;  
+     }
+        else {
+         newList[i].completed=false; 
+         newSpan.innerHTML = newList[i].myTodo;
+     }});
     
 
 }
 
-   function checkInput(myInputTag,newSpan, content){
-    if(myInputTag.checked === true){
-    console.log(content);
-        let li = myInputTag.parentElement;
-        let spanText= li.firstChild;
-        spanText.innerText = "Klar!";
-        
-        
-    }
-     else {
-        if (myInputTag.checked ===false){
-            let li = myInputTag.parentElement;
-            let spanText= li.firstChild;
+function deleteTask(deleteButton, newLiList){
+    console.log(deleteButton);
+    if(deleteButton === true){
 
-        return spanText.innerHTML = content;
+      newLiList.splice(i,2); 
+
+        
     }
 }
 
 
 
-}
 
-//function deleteTask(){
-    //if(del){
-       // newLiList.innerHTML ="";
-    //}
-//}
+
+
+
+
+
+
+
+
 
 
 
