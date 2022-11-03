@@ -49,6 +49,7 @@ for (let i = 0; i < newList.length; i++){
         console.log(newList);
     }
     );
+}
 
 
 
