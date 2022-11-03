@@ -40,6 +40,7 @@ for (let i = 0; i < newList.length; i++){
         if(myInputTag.checked === true){
            newList[i].completed=true;
            newSpan.innerHTML = newList[i].myTodo + " :klar!";  
+           //om jag vill att det endast ska stå "klar" i min HTML, tar jag bort "newList[i].myTodo"
         }
            else {
             newList[i].completed=false; 
@@ -49,10 +50,7 @@ for (let i = 0; i < newList.length; i++){
     }
     );
 
- 
-    
 
-}
 
 
  
