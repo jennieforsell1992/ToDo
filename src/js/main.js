@@ -1,4 +1,4 @@
-import { ToDo } from "./todo";
+import { ToDo } from "./model/todo";
 
 let inputContainer = document.getElementById("inputContainer");
 inputContainer.className = "inputContainerStyle";
@@ -11,7 +11,6 @@ todoContainer.className = "containerList";
 let newUl = document.createElement("ul");
 newUl.className = "ulStyle";
 todoContainer.appendChild(newUl);
-let doneTag = document.getElementById("deletedTask");
 
 
 
@@ -40,7 +39,7 @@ for (let i = 0; i < newList.length; i++){
     myInputTag.addEventListener("click",() => {
         if(myInputTag.checked === true){
            newList[i].completed=true;
-           newSpan.innerHTML =  newList[i].myTodo + " :klar!";  
+           newSpan.innerHTML = newList[i].myTodo + " :klar!";  
         }
            else {
             newList[i].completed=false; 
@@ -50,32 +49,16 @@ for (let i = 0; i < newList.length; i++){
     }
     );
 
-    let deleteButton = document.createElement("button");
-    newLiList.appendChild(deleteButton);
-    deleteButton.innerHTML ="x";
-    deleteButton.addEventListener("click",() => { 
-        if(deleteButton === true){
-
-        newList.splice(i,1);
-        newList.innerHTML =  newList[i].myTodo;  
-     }
-        else {
-         newList[i].completed=false; 
-         newSpan.innerHTML = newList[i].myTodo;
-     }});
+ 
     
 
 }
 
-function deleteTask(deleteButton, newLiList){
-    console.log(deleteButton);
-    if(deleteButton === true){
 
-      newLiList.splice(i,2); 
+ 
 
-        
-    }
-}
+
+
 
 
 
